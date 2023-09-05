@@ -16,7 +16,7 @@ const clock = setInterval(function () {
   var minutes = Math.floor((lessonTime % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((lessonTime % (1000 * 60)) / 1000);
   document.querySelector(".countdown").innerHTML =
-    "-> " + hours + " ore " + minutes + " minuti " + seconds + " secondi.";
+    "-> " + hours + " ore, " + minutes + " minuti, " + seconds + " secondi.";
 
   if (lessonTime == 0) {
     clearInterval(clock);
