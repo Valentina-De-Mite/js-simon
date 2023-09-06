@@ -9,19 +9,23 @@ let newDate = new Date("September 6, 2023 9:30:00").getTime();
 const clock = setInterval(function () {
   let now = new Date().getTime();
 
-  let lessonTime = newDate - now;
+  let lessonTime = Number(newDate - now);
   var hours = Math.floor(
     (lessonTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
   var minutes = Math.floor((lessonTime % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((lessonTime % (1000 * 60)) / 1000);
+  let countDown = hours + minutes + seconds;
   document.querySelector(".countdown").innerHTML =
     "-> " + hours + " ore, " + minutes + " minuti, " + seconds + " secondi.";
 
-  if (lessonTime == 0) {
+  // stoppo il countdown
+  if (countDown < 0) {
     clearInterval(clock);
     alert("Inizia la lezione!");
+    document.querySelector(".countdown").innerHTML =
+      "-> " + 0 + " ore, " + 0 + " minuti, " + 0 + " secondi.";
   } else {
-    lessonTime--;
+    countDown--;
   }
 }, 1000);
